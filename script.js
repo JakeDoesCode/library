@@ -51,15 +51,13 @@ function addBook(title, author, pages, id) {
     console.table(library);
   });
   const bookRead = document.createElement('button');
-  bookRead.textContent="Read";
-  bookRead.classList.add('readBtn')
-  
+  bookRead.textContent = 'Read';
+  bookRead.classList.add('readBtn');
 
- bookRead.addEventListener('click', () =>{
-  bookRead.classList.toggle('hasRead');
- });
+  bookRead.addEventListener('click', () => {
+    bookRead.classList.toggle('hasRead');
+  });
 
-  
   bookDiv.appendChild(bookTitle);
   bookDiv.appendChild(bookAuthor);
   bookDiv.appendChild(bookPages);
@@ -73,13 +71,22 @@ const author = document.getElementById('author');
 const pages = document.getElementById('pages');
 const id = document.getElementById('id');
 
-
-function book(title, author, pages, id) {
-  this.title = title;
-  this.author = author;
-  this.pages = pages;
-  this.id = id;
+class book {
+  constructor(title,author,pages,id){
+    this.title=title;
+    this.author=author;
+    this.pages=pages;
+    this.id=id;
+  }
 }
+
+
+// function book(title, author, pages, id) {
+//   this.title = title;
+//   this.author = author;
+//   this.pages = pages;
+//   this.id = id;
+// }
 
 function newBook() {
   const newBook = new book(title.value, author.value, pages.value, idNum);
@@ -101,10 +108,8 @@ document.querySelector('form').addEventListener('submit', (e) => {
   const author = e.target.author.value;
   const pages = e.target.pages.value;
   newBookLibrary();
-  addBook(title, author, pages, idNum++); // Increment the book id counter whenever we make a new book
+  addBook(title, author, pages, idNum++);
   e.target.reset();
   console.table(library);
 });
 console.table(library);
-
-
